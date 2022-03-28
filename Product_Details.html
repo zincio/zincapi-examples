@@ -109,7 +109,7 @@
                 $("#images").append(`<div class="carousel-item"><img id="image" class="d-block w-100" src="${image}"></div>`)
             }
             $('#images div:first-child').addClass('active');
-            for (const bullet of details.feature_bullets) {
+            for (const bullet of details.feature_bullets || []) {
                 $("#description").append(`<li>${bullet}</li>`)
             }
             $("#price").text((details.price / 100).toFixed(2)) //price is always in cents
