@@ -23,23 +23,32 @@
     <div id="explore" class="container-fluid p-0 d-flex flex-column" style="height: 100%;">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-3 align-items-center d-flex">
+                <div class="col-2 align-items-center d-flex">
                     <img class="me-4" style="width: 25px; filter: invert(100%);" src="./logo.svg">
                     <h5 style="display: inline-block; margin: 0;">Zinc API Examples</h5>
                 </div>
-                <div id="hasCt" class="col-4 align-items-center d-flex">
-                    <span class="me-1">Product&nbsp;Id:</span>
-                    <input id="pidTxt" type="text" class="form-control form-control-sm" placeholder="Product ID" aria-label="Product Id">
+                <div id="hasCt" class="col-6 align-items-center d-flex">
+                    <span class="me-1">Amazon&nbsp;ASIN:</span>
+                    <input id="pidTxt" type="text" class="form-control form-control-sm" value="B07VQ69WP5" aria-label="Product Id">
                     <button id="pidSubmit" type="button" class="btn btn-primary btn-sm m-1">Refresh</button>
                 </div>
-                <div id="noCt" class="col-4 align-items-center d-flex">
-                    <span class="me-1">Product&nbsp;Id:</span>
+                <div id="noCt" class="col-6 align-items-center d-flex">
+                    <span class="me-1">Amazon&nbsp;ASIN:</span>
                     <select id="pidSelect" class="form-select form-select-sm" aria-label="Default select example">
-                        <option value="B07DB12C1G" selected>B07DB12C1G</option>
-                        <option value="B07VQ69WP5">B07VQ69WP5</option>
+                        <option value="B07VQ69WP5" selected>B07VQ69WP5</option>
+                        <option value="B07DB12C1G">B07DB12C1G</option>
                     </select>
                 </div>
-                <div class="col-5 align-items-center justify-content-end d-flex">
+                <div class="col-4 align-items-center justify-content-end d-flex">
+                    <div class="dropdown" title="select example">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="demoSelectMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                          Select Demo
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="demoSelectMenu">
+                          <li><a class="dropdown-item" type="button" href="#Product_Details">Product Details</a></li>
+                          <li><a class="dropdown-item" type="button" href="#Product_Offers">Product Offers</a></li>
+                        </ul>
+                      </div>
                     <button id="setClientToken" type="button" class="btn btn-primary btn-sm m-1">Set Client Token</button>
                 </div>
             </div>
@@ -47,15 +56,18 @@
         <iframe id="demoFrame" class="flex-fill" src="./product_details_demo.html"></iframe>
     </div>
     <script>
-        let pid = 'B07DB12C1G'
+        let pid = 'B07VQ69WP5'
         function refreshIframe() {
             if (localStorage.getItem('ct')) document.getElementById('noCt').style.setProperty('display', 'none', 'important');
             else document.getElementById('hasCt').style.setProperty('display', 'none', 'important');
-            document.getElementById('demoFrame').src = "./" + `product_details_demo.html?pid=${pid}&now=${+new Date()}`
+            const demo = window.location.hash || 'Product_Details'
+            document.getElementById('demoFrame').src = `./${demo.replace("#","")}.html?pid=${pid}&now=${+new Date()}`
+            document.getElementById('demoSelectMenu').innerHTML = window.location.hash.replace(/_|#/g," ") || "Product Details"
         }
         refreshIframe()
 
         document.addEventListener("DOMContentLoaded", () => {
+            window.addEventListener('hashchange', refreshIframe)
             document.getElementById('pidSelect').addEventListener('change', (event) => {
                 pid = event.target.value
                 refreshIframe()

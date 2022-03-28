@@ -96,6 +96,10 @@
         }
 
         function updateProductDetailsUI(details) {
+            if(details.status === "failed"){
+                alert(`${details.code}: ${details.message}`);
+                return;
+            }
             $(".loading").fadeOut(500)
             $("#title").text(details.title)
             $("#brand").text(details.brand)
