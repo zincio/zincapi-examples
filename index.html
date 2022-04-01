@@ -23,18 +23,18 @@
     <div id="explore" class="container-fluid p-0 d-flex flex-column" style="height: 100%;">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-2 align-items-center d-flex">
-                    <img class="me-4" style="width: 25px; filter: invert(100%);" src="./logo.svg">
-                    <h5 style="display: inline-block; margin: 0;">Zinc API Examples</h5>
+                <div class="col-lg-2 col-1 align-items-center d-flex">
+                    <img class="me-4" style="width: 25px; filter: invert(100%);" src="./logo.svg" title="Zinc API Examples">
+                    <h5 class="d-none d-lg-block" style="display: inline-block; margin: 0;">Zinc API Examples</h5>
                 </div>
-                <div id="hasCt" class="col-6 align-items-center d-flex">
-                    <span class="me-1">Amazon&nbsp;ASIN:</span>
+                <div id="hasCt" class="col-lg-6 col-7 align-items-center d-flex">
+                    <span class="me-1 d-none d-sm-block">Amazon&nbsp;ASIN:</span>
                     <input id="pidTxt" type="text" class="form-control form-control-sm" value="B07VQ69WP5" aria-label="Product Id">
                     <button id="pidSubmit" type="button" class="btn btn-primary btn-sm m-1">Refresh</button>
                 </div>
-                <div id="noCt" class="col-6 align-items-center d-flex">
-                    <span class="me-1">Amazon&nbsp;ASIN:</span>
-                    <select id="pidSelect" class="form-select form-select-sm" aria-label="Default select example">
+                <div id="noCt" class="col-lg-6 col-7 align-items-center d-flex">
+                    <span class="me-1 d-none d-sm-block">Amazon&nbsp;ASIN:</span>
+                    <select id="pidSelect" class="form-select form-select-sm me-2" aria-label="Default select example">
                         <option value="B07VQ69WP5" selected>B07VQ69WP5</option>
                         <option value="B0815Y8J9N">B0815Y8J9N</option>
                         <option value="B07SVB39J2">B07SVB39J2</option>
@@ -52,7 +52,7 @@
                           <li><a class="dropdown-item" type="button" href="#Product_Offers">Product Offers</a></li>
                         </ul>
                       </div>
-                    <button id="setClientToken" type="button" class="btn btn-primary btn-sm m-1">Set Client Token</button>
+                    <button id="setClientToken" type="button" class="btn btn-primary btn-sm m-1 d-none d-sm-block">Set Client Token</button>
                 </div>
             </div>
         </div>
